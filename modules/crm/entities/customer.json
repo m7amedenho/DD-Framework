@@ -1,0 +1,7 @@
+﻿{
+  "name": "Customer",
+  "table_name": "tab_customer",
+  "fields": [
+    { "fieldname": "customer_name", "label": "اسم العميل", "fieldtype": "Data", "reqd": 1 }
+  ]
+}
