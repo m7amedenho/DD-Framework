@@ -1,7 +1,28 @@
 ﻿{
   "name": "Customer",
-  "table_name": "tab_customer",
+  "tableName": "tabCustomer",
+  "pk_type": "uuid",
   "fields": [
-    { "fieldname": "customer_name", "label": "اسم العميل", "fieldtype": "Data", "reqd": 1 }
+    {
+      "fieldname": "full_name",
+      "fieldtype": "Data",
+      "reqd": 1,
+      "unique": 1
+    },
+    {
+      "fieldname": "email",
+      "fieldtype": "Data",
+      "reqd": 1
+    },
+    {
+      "fieldname": "age",
+      "fieldtype": "Int",
+      "default": 18
+    },
+    {
+      "fieldname": "is_active",
+      "fieldtype": "Boolean",
+      "default": true
+    }
   ]
 }
