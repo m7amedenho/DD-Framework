@@ -12,7 +12,7 @@ In an industry where relying heavily on AI for code generation can sometimes res
 * Open Source: Free to use, modify, distribute, and build upon.
 
 ## Project Structure
-Based on the current architecture shown in image_2cdc18.png, the repository is divided into distinct, manageable segments:
+the repository is divided into distinct, manageable segments:
 
 * `@client_ui/`: The frontend application built with Vue.js and Vite. It consumes the dynamically generated APIs to render user interfaces, forms, and data tables on the fly.
 * `engine/`: The core backend logic. It contains the database connection manager (`database.js`), the metadata memory loader (`metadata.js`), and the schema generator (`schema.js`).
