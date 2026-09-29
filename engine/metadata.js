@@ -4,9 +4,9 @@ import path from "path";
 const ENTITY_CACHE = new Map();
 
 /**
- * Scans all module directories to read Entity JSON files 
+ * Scans all module directories to read Entity JSON files
  * and loads them into an in-memory cache for fast retrieval.
- * 
+ *
  * @async
  * @returns {Promise} Resolves when all metadata is successfully cached.
  */
@@ -20,12 +20,20 @@ export async function loadAllMetadata() {
 
     for (const file of files) {
       if (file.endsWith(".json")) {
-        const fileContent = await fs.readFile(
-          path.join(entitiesPath, file), 
-          "utf-8"
-        );
-        
-        const data = JSON.parse(fileContent);
+        const filePath = path.join(entitiesPath, file);
+        const fileContent = await fs.readFile(filePath, "utf-8");
+
+        let data;
+        try {
+          data = JSON.parse(fileContent.replace(/^\uFEFF/, ""));
+        } catch (error) {
+          throw new SyntaxError(
+            `Invalid metadata JSON in ${filePath}: ${error.message}`,
+            {
+              cause: error,
+            },
+          );
+        }
 
         if (data.name) {
           ENTITY_CACHE.set(data.name, data);
@@ -38,7 +46,7 @@ export async function loadAllMetadata() {
 
 /**
  * Retrieves the metadata of a specific Entity from the in-memory cache.
- * 
+ *
  * @param {string} entityName - The exact name of the entity (e.g., "Customer").
  * @returns {Object | undefined} The Entity JSON object, or undefined if not found.
  */
