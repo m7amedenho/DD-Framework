@@ -49,4 +49,4 @@ We strongly believe in the power of the open-source community and welcome develo
 For major architectural changes, please open an issue first to discuss your ideas with the core maintainers.
 
 ## License
-This project is open-source and available under the MIT License.
+This project is open-source and available under the GNU V3.
